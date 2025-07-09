@@ -7,7 +7,12 @@ const app = express();
 
 // ✅ Allow CORS from your frontend explicitly
 app.use(cors({
-  origin: 'https://fintrackr-ke7two171-aryas1904s-projects.vercel.app',
+  origin: (origin, callback) => {
+    if (!origin || origin.endsWith('.vercel.app')) {
+      return callback(null, true);
+    }
+    callback(new Error('Not allowed by CORS'));
+  },
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true,
 }));
