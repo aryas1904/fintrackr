@@ -5,11 +5,11 @@ require('dotenv').config();
 
 const app = express();
 
-// Allow CORS from your frontend explicitly
+// ✅ Allow CORS from your frontend explicitly
 app.use(cors({
-  origin: 'https://fintrackr-ke7two171-aryas1904s-projects.vercel.app/',
+  origin: 'https://fintrackr-ke7two171-aryas1904s-projects.vercel.app',
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  credentials: true, // optional, if using cookies or auth headers
+  credentials: true,
 }));
 
 // ✅ Parse JSON bodies
@@ -17,7 +17,7 @@ app.use(express.json());
 
 // ✅ Your routes
 const transactionRoutes = require('./routes/transactions');
-app.use('https://fintrackr-nwki.onrender.com/api/transactions', transactionRoutes);
+app.use('/api/transactions', transactionRoutes);
 
 // ✅ Connect DB
 mongoose.connect(process.env.MONGO_URI)
