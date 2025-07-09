@@ -7,7 +7,7 @@ const app = express();
 
 // Allow CORS from your frontend explicitly
 app.use(cors({
-  origin: 'http://localhost:3000',
+  origin: 'https://fintrackr-ke7two171-aryas1904s-projects.vercel.app/',
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true, // optional, if using cookies or auth headers
 }));
@@ -17,7 +17,7 @@ app.use(express.json());
 
 // ✅ Your routes
 const transactionRoutes = require('./routes/transactions');
-app.use('/api/transactions', transactionRoutes);
+app.use('https://fintrackr-nwki.onrender.com/api/transactions', transactionRoutes);
 
 // ✅ Connect DB
 mongoose.connect(process.env.MONGO_URI)
