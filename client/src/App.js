@@ -8,7 +8,7 @@ function App() {
   const [transactions, setTransactions] = useState([]);
 
   const fetchTransactions = async () => {
-    const res = await axios.get('http://localhost:5000/api/transactions');
+    const res = await axios.get('https://fintrackr-nwki.onrender.com/api/transactions');
     setTransactions(res.data);
   };
 
@@ -17,17 +17,17 @@ function App() {
   }, []);
 
   const addTransaction = async (transaction) => {
-    await axios.post('http://localhost:5000/api/transactions', transaction);
+    await axios.post('https://fintrackr-nwki.onrender.com/api/transactions', transaction);
     fetchTransactions();
   };
 
   const updateTransaction = async (id, updated) => {
-    await axios.put(`http://localhost:5000/api/transactions/${id}`, updated);
+    await axios.put(`https://fintrackr-nwki.onrender.com/api/transactions/${id}`, updated);
     fetchTransactions();
   };
 
   const deleteTransaction = async (id) => {
-    await axios.delete(`http://localhost:5000/api/transactions/${id}`);
+    await axios.delete(`https://fintrackr-nwki.onrender.com/api/transactions/${id}`);
     fetchTransactions();
   };
 
